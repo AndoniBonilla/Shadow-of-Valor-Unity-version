@@ -231,7 +231,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -3402821511131550321, guid: e7656f3c57c301e4fb6072c286308aeb, type: 3}
-  m_Color: {r: 0.29169634, g: 0.30792037, b: 0.6509434, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -250,8 +250,8 @@ Transform:
   m_GameObject: {fileID: 473011299}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0002617804, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0655, y: -6.6562, z: 1.5587}
-  m_LocalScale: {x: 3.4637372, y: 8.344668, z: 1}
+  m_LocalPosition: {x: -0.21, y: -4.07, z: 1.56}
+  m_LocalScale: {x: 2.3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -392,7 +392,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   amberRigidbody: {fileID: 629610250}
   animator: {fileID: 629610255}
-  moveSpeed: 6
   jumpStrength: 10
   groundCheck: {fileID: 2118160859}
   groundCheckRadius: 0.15
@@ -471,8 +470,6 @@ GameObject:
   - component: {fileID: 686768882}
   - component: {fileID: 686768881}
   - component: {fileID: 686768880}
-  - component: {fileID: 686768884}
-  - component: {fileID: 686768883}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -554,44 +551,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &686768883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686768879}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58a413abe50b4b8489c8837f4d508260, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AmberScript
-  amberRigidbody: {fileID: 0}
-  animator: {fileID: 0}
-  moveSpeed: 6
-  jumpStrength: 12
-  groundCheck: {fileID: 0}
-  groundCheckRadius: 0.15
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  coyoteTime: 0.1
-  jumpBufferTime: 0.1
---- !u!114 &686768884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686768879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed8b6d82fc9d434cbf874d4fce4c5e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  target: {fileID: 629610252}
-  offset: {x: 0, y: 0, z: -10}
-  smoothSpeed: 0.5
 --- !u!1 &716591635
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +676,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 629610252}
   - {fileID: 686768882}
+  - {fileID: 629610252}
   - {fileID: 716591637}
   - {fileID: 473011302}

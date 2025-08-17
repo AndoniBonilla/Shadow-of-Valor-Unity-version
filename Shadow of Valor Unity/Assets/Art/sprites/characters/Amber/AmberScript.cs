@@ -6,6 +6,10 @@ public class AmberScript : MonoBehaviour
     public Rigidbody2D amberRigidbody;
     public Animator animator;                 // add this
 
+    [Header("Movement")]
+    public float moveSpeed = 6f;   // how fast the character runs
+    private float baseScaleX;
+
     [Header("Jump Settings")]
     public float jumpStrength = 12f;
 
@@ -23,6 +27,11 @@ public class AmberScript : MonoBehaviour
     private float jumpBufferTimer;
     private int jumpsUsed;
 
+    private void Start()
+    {
+        baseScaleX = transform.localScale.x;
+    }
+
     private void Update()
     {
         // Jump input buffer
@@ -37,8 +46,35 @@ public class AmberScript : MonoBehaviour
                 jumpBufferTimer -= Time.deltaTime;
             }
         }
+        // --- Horizontal movement with A/D ---
+        float moveInput = 0f;
+        if (Input.GetKey(KeyCode.A)) moveInput = -1f;
+        if (Input.GetKey(KeyCode.D)) moveInput = 1f;
+
+        // Apply movement
+        Vector2 velocity = amberRigidbody.linearVelocity;
+        velocity.x = moveInput * moveSpeed;
+        amberRigidbody.linearVelocity = velocity;
+
+        // Flip sprite based on direction
+        if (moveInput != 0)
+        {
+            if (moveInput != 0f)
+            {
+                float dir = moveInput < 0f ? -1f : 1f;
+                Vector3 s = transform.localScale;
+                s.x = Mathf.Abs(baseScaleX) * dir;
+                transform.localScale = s;
+            }
+
+        }
+
+        // Set animator speed parameter for run animation
+        animator.SetFloat("speed", Mathf.Abs(moveInput));
 
         updateGrounded();
+        animator.SetFloat("speed", Mathf.Abs(moveInput));   // Idle <-> Run
+        animator.SetBool("isJumping", !grounded);
 
         // Animation hook: set bool based on ground
         animator.SetBool("isJumping", !grounded);
@@ -87,5 +123,6 @@ public class AmberScript : MonoBehaviour
 
         coyoteTimer = 0f;
     }
+
 }
 
